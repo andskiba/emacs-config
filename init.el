@@ -2,16 +2,19 @@
 			 "~/.emacs.d/languages"))
   (add-to-list 'load-path as-load-path))
 
+
 (use-package
   emacs
   :ensure nil
   :init
-  (setq custom-file "~/.emacs.d/custom.el")
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (setq custom-file "~/.emacs.d/custom.el")
   :config
+  (load custom-file :noerror)
   (tool-bar-mode -1)
   (setq inhibit-startup-screen +1)
   (global-prettify-symbols-mode)
+  (recentf-mode +1)
   ;; temporary files
   (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
   (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
@@ -36,7 +39,9 @@
 	 ("C-c m d" . duplicate-line)
 	 ("C-x g" . magit-status)))
 
-
+(use-package indent-guide
+  :ensure t
+  :config (indent-guide-global-mode +1))
 (use-package magit :ensure t)
 (use-package multiple-cursors :ensure t)
 (use-package undo-tree
@@ -64,11 +69,20 @@
   :hook (prog-mode emacs-lisp-mode)
   :config (require 'smartparens-config))
 
+(use-package yasnippet
+  :ensure t
+  :config
+  (use-package yasnippet-snippets :ensure t)
+  (dolist (snippet-dir '("/home/jedrek/.emacs.d/personal/snippets"))
+    (add-to-list 'yas-snippet-dirs snippet-dir))
+  (yas-global-mode +1))
+
 (use-package treesit
   :config
   (dolist (grammar
            '((css . ("https://github.com/tree-sitter/tree-sitter-css" "v0.20.0"))
-             (go . ("https://github.com/tree-sitter/tree-sitter-go" "v0.20.0"))
+             (go . ("https://github.com/tree-sitter/tree-sitter-go" "v0.23.1"))
+             (gomod . ("https://github.com/camdencheek/tree-sitter-go-mod" "v1.1.0"))
              (html . ("https://github.com/tree-sitter/tree-sitter-html" "v0.20.1"))
              (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "v0.20.1" "src"))
              (json . ("https://github.com/tree-sitter/tree-sitter-json" "v0.20.2"))
@@ -230,8 +244,7 @@
 
   ;; Optionally make narrowing help available in the minibuffer.
   ;; You may want to use `embark-prefix-help-command' or which-key instead.
-  ;; (keymap-set consult-narrow-map (concat consult-narrow-key " ?") #'consult-narrow-help)
-  )
+  (keymap-set consult-narrow-map (concat consult-narrow-key " ?") #'consult-narrow-help))
 
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
@@ -290,6 +303,12 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
+(use-package combobulate
+   :custom
+   (combobulate-key-prefix "C-c o")
+   :hook ((prog-mode . combobulate-mode))
+   :load-path ("~/.emacs.d/external/combobulate"))
+
 (require 'as-theme)
 (require 'as-org)
 
@@ -299,6 +318,8 @@
 (require 'as-dockerfile)
 (require 'as-yaml)
 (require 'as-toml)
+(require 'as-clojure)
+(require 'as-go)
 
 
 

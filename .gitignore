@@ -4,6 +4,11 @@
 /multisession/
 /tree-sitter/
 /transient/
+/external/
+/eshell/
 projects
 history
 ielm-history.eld
+recentf
+tramp
+%backup%~

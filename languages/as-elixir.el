@@ -1,12 +1,10 @@
+(require 'as-prog-utils)
+
 (use-package
   eglot
   :ensure nil
   :config (add-to-list 'eglot-server-programs
                        '(elixir-ts-mode "/home/jedrek/software/elixir-ls/language_server.sh")))
-
-(defun as/maybe-format-buffer ()
-  (when (bound-and-true-p eglot-managed-p)
-    (eglot-format-buffer)))
 
 (use-package
   elixir-ts-mode
