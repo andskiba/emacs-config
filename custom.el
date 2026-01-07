@@ -9,8 +9,8 @@
  '(package-selected-packages
    '(avy browse-kill-ring cider clj-refactor clj-refactor-mode
 	 clojure-ts-mode corfu crux embark-consult exunit indent-guide
-	 key-chord magit marginalia multiple-cursors orderless
-	 rust-mode smartparens undo-tree vertico yasnippet
+	 key-chord magit marginalia markdown-ts-mode multiple-cursors
+	 orderless rust-mode smartparens undo-tree vertico yasnippet
 	 yasnippet-snippets))
  '(safe-local-variable-values '((flycheck-disabled-checkers emacs-lisp-checkdoc)))
  '(treesit-font-lock-level 3))
