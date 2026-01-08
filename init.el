@@ -18,6 +18,9 @@
   ;; temporary files
   (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
   (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+  ;; Mac specific configuration
+  (if (eq system-type 'darwin)
+      (setq mac-command-modifier 'control))
   ;; remap old major modes to treesitter modes
   (dolist (mapping
            '((elixir-mode . elixir-ts-mode)
@@ -38,6 +41,8 @@
 	 ("C-c m t g" . insert-getter-setter)
 	 ("C-c m d" . duplicate-line)
 	 ("C-x g" . magit-status)))
+
+(use-package dash :ensure t)
 
 (use-package indent-guide
   :ensure t
@@ -320,7 +325,3 @@
 (require 'as-toml)
 (require 'as-clojure)
 (require 'as-go)
-
-
-
-

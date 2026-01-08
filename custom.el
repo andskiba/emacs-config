@@ -4,14 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
-   '("~/org/blog.org" "/home/jedrek/org/work.org"
-     "/home/jedrek/org/life.org"))
+   '("~/org/blog.org" "/home/jedrek/org/work.org" "/home/jedrek/org/life.org"))
  '(package-selected-packages
-   '(avy browse-kill-ring cider clj-refactor clj-refactor-mode
-	 clojure-ts-mode corfu crux embark-consult exunit indent-guide
-	 key-chord magit marginalia multiple-cursors orderless
-	 rust-mode smartparens undo-tree vertico yasnippet
-	 yasnippet-snippets))
+   '(orderless marginalia vertico exunit elixir-ts-mode rust-mode embark-consult embark corfu yasnippet-snippets yasnippet smartparens key-chord browse-kill-ring avy crux undo-tree multiple-cursors magit indent-guide dash))
  '(safe-local-variable-values '((flycheck-disabled-checkers emacs-lisp-checkdoc)))
  '(treesit-font-lock-level 3))
 (custom-set-faces
