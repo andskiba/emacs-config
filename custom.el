@@ -6,7 +6,11 @@
  '(org-agenda-files
    '("~/org/blog.org" "/home/jedrek/org/work.org" "/home/jedrek/org/life.org"))
  '(package-selected-packages
-   '(orderless marginalia vertico exunit elixir-ts-mode rust-mode embark-consult embark corfu yasnippet-snippets yasnippet smartparens key-chord browse-kill-ring avy crux undo-tree multiple-cursors magit indent-guide dash))
+   '(avy browse-kill-ring cider clj-refactor clj-refactor-mode
+	 clojure-ts-mode corfu crux embark-consult exunit indent-guide
+	 key-chord magit marginalia markdown-ts-mode multiple-cursors
+	 orderless rust-mode smartparens undo-tree vertico yasnippet
+	 yasnippet-snippets))
  '(safe-local-variable-values '((flycheck-disabled-checkers emacs-lisp-checkdoc)))
  '(treesit-font-lock-level 3))
 (custom-set-faces

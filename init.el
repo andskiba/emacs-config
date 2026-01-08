@@ -91,7 +91,8 @@
              (html . ("https://github.com/tree-sitter/tree-sitter-html" "v0.20.1"))
              (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "v0.20.1" "src"))
              (json . ("https://github.com/tree-sitter/tree-sitter-json" "v0.20.2"))
-             (markdown . ("https://github.com/ikatyang/tree-sitter-markdown" "v0.7.1"))
+	     (markdown . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
+	     (markdown-inline . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src"))
              (python . ("https://github.com/tree-sitter/tree-sitter-python" "v0.20.4"))
              (rust . ("https://github.com/tree-sitter/tree-sitter-rust" "v0.21.2"))
              (toml . ("https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1"))
@@ -325,3 +326,5 @@
 (require 'as-toml)
 (require 'as-clojure)
 (require 'as-go)
+(require 'as-markdown)
+
