@@ -38,8 +38,11 @@
   :custom
   (enable-recursive-minibuffers t)
   :bind (("C-c m SPC" . fixup-whitespace)
+	 ("C-c m l" . browse-url)
 	 ("C-c m t g" . insert-getter-setter)
 	 ("C-c m d" . duplicate-line)
+	 ("C-c m /" . comment-or-uncomment-region)
+	 ("C-c m m" . mc/edit-lines)
 	 ("C-x g" . magit-status)))
 
 (use-package dash :ensure t)
@@ -92,7 +95,7 @@
              (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "v0.20.1" "src"))
              (json . ("https://github.com/tree-sitter/tree-sitter-json" "v0.20.2"))
 	     (markdown . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
-	     (markdown-inline . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src"))
+	     ;; (markdown-inline . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src"))
              (python . ("https://github.com/tree-sitter/tree-sitter-python" "v0.20.4"))
              (rust . ("https://github.com/tree-sitter/tree-sitter-rust" "v0.21.2"))
              (toml . ("https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1"))
@@ -314,6 +317,19 @@
    (combobulate-key-prefix "C-c o")
    :hook ((prog-mode . combobulate-mode))
    :load-path ("~/.emacs.d/external/combobulate"))
+
+(use-package csv-mode :ensure t)
+
+;; vterm - make sure all the requirements from
+;; https://github.com/akermu/emacs-libvterm?tab=readme-ov-file#requirements
+;; are installed
+(use-package vterm
+  :ensure t)
+
+;; ace-window
+(use-package ace-window
+  :ensure t
+  :bind ("M-o" . ace-window))
 
 (require 'as-theme)
 (require 'as-org)
