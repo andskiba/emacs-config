@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: jira-story
+# key: j-s
+# --
+**** $1
+***** What
+$0
+***** Why
+
+***** Acceptance Criteria
+
+***** Test Scenarios

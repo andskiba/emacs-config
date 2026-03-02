@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: jira-epic
+# key: j-e
+# --
+** $1
+*** Goal
+$0
+*** Acceptance Criteria
+ - 
+*** Use cases
+ - 
+*** Stories
