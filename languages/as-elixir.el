@@ -32,11 +32,14 @@
   exunit
   :ensure t
   :diminish t
-  :bind
-  ("C-c m e ." . exunit-verify-single)
-  ("C-c m e b" . exunit-verify)
-  ("C-c m e u a" . exunit-verify-all-in-umbrella)
-  ("C-c m e a" . exunit-verify-all)
-  ("C-c m e l" . exunit-rerun))
+  :config
+  (defvar-keymap my-elixir-map
+    :doc "Elixir keybindings (bound to C-c m e)."
+    "." #'exunit-verify-single
+    "b" #'exunit-verify
+    "u a" #'exunit-verify-all-in-umbrella
+    "a" #'exunit-verify-all
+    "l" #'exunit-rerun)
+  (keymap-set my-map "e" my-elixir-map))
 
 (provide 'as-elixir)

@@ -32,12 +32,16 @@
              (json-mode . json-ts-mode)
              (js-json-mode . json-ts-mode)))
     (add-to-list 'major-mode-remap-alist mapping))
+  (defvar-keymap my-map
+    :doc "My personal keybindings (bound to C-c m)."
+    "SPC" #'fixup-whitespace
+    "t g" #'insert-getter-setter
+    "d"   #'duplicate-line
+    "l"   #'browse-url-at-point)
   :custom
   (enable-recursive-minibuffers t)
-  :bind (("C-c m SPC" . fixup-whitespace)
-	 ("C-c m t g" . insert-getter-setter)
-	 ("C-c m d" . duplicate-line)
-	 ("C-x g" . magit-status)))
+  :bind (("C-x g" . magit-status))
+  :bind-keymap ("C-c m" . my-map))
 
 (use-package indent-guide
   :ensure t

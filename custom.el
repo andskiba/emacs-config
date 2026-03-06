@@ -12,7 +12,9 @@
 	 key-chord magit marginalia markdown-ts-mode multiple-cursors
 	 orderless rust-mode smartparens undo-tree vertico yasnippet
 	 yasnippet-snippets))
- '(safe-local-variable-values '((flycheck-disabled-checkers emacs-lisp-checkdoc)))
+ '(safe-local-variable-values
+   '((common-lisp-style . modern)
+     (flycheck-disabled-checkers emacs-lisp-checkdoc)))
  '(treesit-font-lock-level 3))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
