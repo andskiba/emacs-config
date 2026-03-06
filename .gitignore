@@ -12,3 +12,4 @@ ielm-history.eld
 recentf
 tramp
 %backup%~
+*.~undo-tree~
