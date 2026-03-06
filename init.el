@@ -18,6 +18,9 @@
   ;; temporary files
   (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
   (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+  ;; Mac specific configuration
+  (if (eq system-type 'darwin)
+      (setq mac-command-modifier 'control))
   ;; remap old major modes to treesitter modes
   (dolist (mapping
            '((elixir-mode . elixir-ts-mode)
@@ -37,11 +40,15 @@
     "SPC" #'fixup-whitespace
     "t g" #'insert-getter-setter
     "d"   #'duplicate-line
-    "l"   #'browse-url-at-point)
+    "l"   #'browse-url-at-point
+    "/"   #'comment-or-uncomment-region
+    "m"   #'mc/edit-lines)
   :custom
   (enable-recursive-minibuffers t)
   :bind (("C-x g" . magit-status))
   :bind-keymap ("C-c m" . my-map))
+
+(use-package dash :ensure t)
 
 (use-package indent-guide
   :ensure t
@@ -91,7 +98,7 @@
              (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "v0.20.1" "src"))
              (json . ("https://github.com/tree-sitter/tree-sitter-json" "v0.20.2"))
 	     (markdown . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
-	     (markdown-inline . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src"))
+	     ;; (markdown-inline . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src"))
              (python . ("https://github.com/tree-sitter/tree-sitter-python" "v0.20.4"))
              (rust . ("https://github.com/tree-sitter/tree-sitter-rust" "v0.21.2"))
              (toml . ("https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1"))
@@ -314,6 +321,19 @@
    :hook ((prog-mode . combobulate-mode))
    :load-path ("~/.emacs.d/external/combobulate"))
 
+(use-package csv-mode :ensure t)
+
+;; vterm - make sure all the requirements from
+;; https://github.com/akermu/emacs-libvterm?tab=readme-ov-file#requirements
+;; are installed
+(use-package vterm
+  :ensure t)
+
+;; ace-window
+(use-package ace-window
+  :ensure t
+  :bind ("M-o" . ace-window))
+
 (require 'as-theme)
 (require 'as-org)
 
@@ -326,7 +346,4 @@
 (require 'as-clojure)
 (require 'as-go)
 (require 'as-markdown)
-
-
-
 
