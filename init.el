@@ -107,7 +107,8 @@
              (yaml . ("https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))
 	     (heex "https://github.com/phoenixframework/tree-sitter-heex")
 	     (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
-	     (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile" "v0.2.0"))))
+	     (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile" "v0.2.0"))
+	     (php . ("https://github.com/tree-sitter/tree-sitter-php" "v0.24.2" "php/src"))))
     (add-to-list 'treesit-language-source-alist grammar)
     (unless (treesit-language-available-p (car grammar))
       (treesit-install-language-grammar (car grammar)))))
@@ -346,4 +347,5 @@
 (require 'as-clojure)
 (require 'as-go)
 (require 'as-markdown)
+(require 'as-php)
 
